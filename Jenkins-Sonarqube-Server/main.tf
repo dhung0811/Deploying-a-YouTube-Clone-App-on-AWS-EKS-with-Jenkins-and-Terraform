@@ -1,3 +1,4 @@
+
 module "vpc" {
   source = "./vpc"
   name = "jenkins-sonarqube-vpc"
@@ -51,6 +52,10 @@ module "public_sg" {
   ]
 }
 
+data "template_file" "user_data" {
+  template = file("./install.sh")
+}
+
 module "ec2" {
   source = "./ec2"
   name = "jenkins-sonarqube-server"
@@ -60,5 +65,5 @@ module "ec2" {
   key_name = "ec2-key1"
   associate_ip = true
   security_group_ids = [module.public_sg.security_group_id]
-  user_data = file("./install.sh")
+  user_data = data.template_file.user_data.rendered
 }
