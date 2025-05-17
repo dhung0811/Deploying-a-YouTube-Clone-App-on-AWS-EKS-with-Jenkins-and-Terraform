@@ -60,7 +60,7 @@ module "ec2" {
   source = "./ec2"
   name = "jenkins-sonarqube-server"
   ami_id = "ami-084568db4383264d4"
-  instance_type = "t2.micro"
+  instance_type = "t3.medium"
   subnet_id = module.vpc.vpc_public_subnet_id
   key_name = "ec2-key1"
   associate_ip = true
