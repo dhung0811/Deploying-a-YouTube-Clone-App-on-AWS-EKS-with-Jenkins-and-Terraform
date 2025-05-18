@@ -12,6 +12,7 @@ RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 # Set the environment variable for the Rapid API key using build-time argument
 ARG REACT_APP_RAPID_API_KEY
