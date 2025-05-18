@@ -22,6 +22,24 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/dhung0811/Deploying-a-YouTube-Clone-App-on-AWS-EKS-with-Jenkins-and-Terraform.git'
             }
         }
+        stage('NPM Clean & Audit Fix') {
+            steps {
+                sh '''
+            echo "🧹 Cleaning node_modules and package-lock.json"
+            rm -rf node_modules package-lock.json
+
+            echo "📦 Installing fresh dependencies"
+            npm install
+
+            echo "🔍 Running npm audit fix"
+            npm audit fix || true
+
+            echo "⚠️ Running npm audit fix --force"
+            npm audit fix --force || true
+        '''
+            }
+        }
+
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
