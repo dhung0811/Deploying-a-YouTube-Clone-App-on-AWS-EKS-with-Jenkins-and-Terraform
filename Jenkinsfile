@@ -65,7 +65,7 @@ pipeline{
         stage('Install Trivy') {
             steps {
                 sh '''
-                    echo "🔧 Installing Trivy..."
+                    echo "Installing Trivy..."
                     sudo apt-get update -y
                     sudo apt-get install wget apt-transport-https gnupg lsb-release -y
 
@@ -78,7 +78,7 @@ pipeline{
                     sudo apt-get update -y
                     sudo apt-get install trivy -y
 
-                    echo "✅ Trivy Installed:"
+                    echo "Trivy Installed:"
                     trivy --version
                     '''
                 }
