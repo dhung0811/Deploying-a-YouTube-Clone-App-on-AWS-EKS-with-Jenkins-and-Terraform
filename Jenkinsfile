@@ -25,16 +25,16 @@ pipeline{
         stage('NPM Clean & Audit Fix') {
             steps {
                 sh '''
-            echo "🧹 Cleaning node_modules and package-lock.json"
+            echo "Cleaning node_modules and package-lock.json"
             rm -rf node_modules package-lock.json
 
-            echo "📦 Installing fresh dependencies"
+            echo "Installing fresh dependencies"
             npm install
 
-            echo "🔍 Running npm audit fix"
+            echo "Running npm audit fix"
             npm audit fix || true
 
-            echo "⚠️ Running npm audit fix --force"
+            echo "Running npm audit fix --force"
             npm audit fix --force || true
         '''
             }
