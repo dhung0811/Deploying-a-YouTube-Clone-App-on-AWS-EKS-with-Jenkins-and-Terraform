@@ -62,6 +62,29 @@ pipeline{
             }
         }
 
+        stage('Install Trivy') {
+            steps {
+                sh '''
+                    echo "🔧 Installing Trivy..."
+                    sudo apt-get update -y
+                    sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+
+                    wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | \
+                      sudo gpg --dearmor -o /usr/share/keyrings/trivy.gpg
+
+                    echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -cs) main" | \
+                      sudo tee /etc/apt/sources.list.d/trivy.list > /dev/null
+
+                    sudo apt-get update -y
+                    sudo apt-get install trivy -y
+
+                    echo "✅ Trivy Installed:"
+                    trivy --version
+                    '''
+                }
+            }
+
+
         stage('TRIVY FS SCAN') {
             steps {
                 sh "trivy fs . > trivyfs.txt"
