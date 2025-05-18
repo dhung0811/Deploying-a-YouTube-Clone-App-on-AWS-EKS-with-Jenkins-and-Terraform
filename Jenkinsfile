@@ -23,6 +23,13 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/dhung0811/Deploying-a-YouTube-Clone-App-on-AWS-EKS-with-Jenkins-and-Terraform.git'
             }
         }
+
+        stage('Install ESLint Plugin') {
+            steps {
+                sh 'npm install eslint-plugin-react --save-dev'
+                }
+        }
+
         stage('NPM Clean & Audit Fix') {
             steps {
                 sh '''
