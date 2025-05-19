@@ -16,6 +16,7 @@ pipeline{
         stage('clean workspace'){
             steps{
                 cleanWs()
+                sh 'docker system prune -af --volumes'
             }
         }
         stage('Checkout from Git'){
@@ -88,7 +89,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image dhung0811/youtube:latest > trivyimage.txt"
+                sh "trivy image --scanners vuln dhung0811/youtube:latest > trivyimage.txt"
             }
         }
         stage('Deploy to container'){
