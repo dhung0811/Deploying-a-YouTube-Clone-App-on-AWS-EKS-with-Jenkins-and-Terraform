@@ -14,7 +14,9 @@ resource "aws_instance" "jenkins-sonarqube-server" {
   associate_public_ip_address = var.associate_ip
   user_data = var.user_data
   vpc_security_group_ids = var.security_group_ids
-
+  lifecycle {
+    ignore_changes = [user_data]
+  }
   tags = {
     Name = var.name
   }
