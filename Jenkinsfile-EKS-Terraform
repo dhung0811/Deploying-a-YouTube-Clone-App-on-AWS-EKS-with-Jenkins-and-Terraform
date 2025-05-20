@@ -37,7 +37,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
-                dir('EKS-TF') {
+                dir('Terraform-EKS') {
                     script {
                         sh "terraform plan }"
                     }
