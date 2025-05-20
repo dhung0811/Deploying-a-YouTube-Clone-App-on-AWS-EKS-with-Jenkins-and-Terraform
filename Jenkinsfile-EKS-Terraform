@@ -53,9 +53,9 @@ pipeline {
                     dir('Terraform-EKS') {
                         script {
                             if (params.'Terraform-Action' == 'apply') {
-                                sh "terraform apply -auto-approve }"
+                                sh "terraform apply -auto-approve "
                             } else if (params.'Terraform-Action' == 'destroy') {
-                                sh "terraform destroy -auto-approve }"
+                                sh "terraform destroy -auto-approve "
                             } else {
                                 error "Invalid value for Terraform-Action: ${params.'Terraform-Action'}"
                             }
