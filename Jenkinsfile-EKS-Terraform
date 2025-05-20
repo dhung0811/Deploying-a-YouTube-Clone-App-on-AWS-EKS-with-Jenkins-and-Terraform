@@ -39,7 +39,7 @@ pipeline {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
                 dir('Terraform-EKS') {
                     script {
-                        sh "terraform plan }"
+                        sh "terraform plan "
                     }
                 }
                 }
