@@ -97,7 +97,7 @@ pipeline{
                 sh 'docker run -d --name youtube1 -p 3000:3000 dhung0811/youtube:latest'
             }
         }
-        /*
+
         stage('Deploy to kubernets'){
             steps{
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
@@ -108,7 +108,6 @@ pipeline{
                 }
             }   }
         }
-        */
     }
     post {
     always {
