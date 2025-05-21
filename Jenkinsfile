@@ -98,16 +98,17 @@ pipeline{
             }
         }
 
-        stage('Deploy to kubernets'){
-            steps{
+        stage('Deploy to Kubernetes') {
+            steps {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
-                script{
-                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                        sh 'kubectl apply -f deployment.yml --validate=false'
-                    }
-                }
-            }   }
+                sh '''
+                aws eks update-kubeconfig --name eks-cluster --region us-east-1
+                kubectl apply -f deployment.yml --validate=false
+                '''
         }
+    }
+}
+
     }
     post {
     always {
