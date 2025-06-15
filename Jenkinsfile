@@ -13,26 +13,20 @@ pipeline{
         NVD_API_KEY = credentials('NVD_API_KEY')
     }
     stages {
-        stage('clean workspace'){
-            steps{
-                cleanWs()
-                sh 'docker system prune -af --volumes'
-            }
-        }
-        stage('Checkout from Git'){
+       stage('Checkout from Git'){
             steps{
                 git branch: 'main', url: 'https://github.com/dhung0811/Deploying-a-YouTube-Clone-App-on-AWS-EKS-with-Jenkins-and-Terraform.git'
             }
         }
 
-        stage('Install ESLint Plugin') {
-            steps {
+       stage('Install ESLint Plugin') {
+           steps {
                 sh 'npm install eslint-plugin-react --save-dev'
                 }
         }
 
-        stage('NPM Clean & Audit Fix') {
-            steps {
+       stage('NPM Clean & Audit Fix') {
+           steps {
                 sh '''
             echo "Cleaning node_modules and package-lock.json"
             rm -rf node_modules package-lock.json
@@ -47,7 +41,7 @@ pipeline{
             npm audit fix --force || true
         '''
             }
-        }
+       }
 
         stage("Sonarqube Analysis "){
             steps{
