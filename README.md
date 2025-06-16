@@ -89,7 +89,7 @@ After running the above commands, you will have a Jenkins and SonarQube server r
     - Docker
 ![Docker credential](/img/addDockerCredentials.png)
 5. Configure the SonarQube server:
-![DoneSonarQube](/img/DoneSonar.png)
+![DoneSonarQube](/img/oneSonar.png)
 Login to SonarQube at `http://<EC2_PUBLIC_IP>:9000` with the default credentials (admin/admin) and change the password. Then, generate a token.
 Go Administration → Security → Users → Tokens and Update Token → Define the Token → Generate Token.
 ![Create Token For Jenkins On Sonar](/img/createTokenForJenkinsOnSonar.png)
