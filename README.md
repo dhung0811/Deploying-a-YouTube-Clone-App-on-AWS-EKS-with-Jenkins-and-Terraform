@@ -41,6 +41,8 @@ treraform apply
 ```
 After running the above commands, you will have a Jenkins and SonarQube server running on AWS EC2 instance. You can access Jenkins at `http://<EC2_PUBLIC_IP>:8080` and SonarQube at `http://<EC2_PUBLIC_IP>:9000`.
 ![DoneJenkins](/img/DoneJenkins.png)
+
+
 ![DoneSonarQube](/img/DoneSonar.png)
 ## Configure Jenkins
 1. Open Jenkins in your browser.
