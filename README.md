@@ -133,7 +133,7 @@ Go Administration → Security → Users → Tokens and Update Token → Define 
 12. Run the pipeline:
     - Click on `Build Now` to run the pipeline.
     - Monitor the build progress in the Jenkins console.
-    ![Run Pipeline](/img/doneCIPipeline.png)
+    ![Run Pipeline](/img/doneCIpipeline.png)
     - Once the pipeline is successful, you test the application by accessing the the IP `http://<EC2_PUBLIC_IP>:3000`.
     ![Deployed using Docker](/img/deployusingdocker.png)
 13. Create Pipeline for create EKS cluster.
@@ -169,7 +169,7 @@ Go Administration → Security → Users → Tokens and Update Token → Define 
     }
     ```
 16. Run the pipeline:
-![Run the pipeline](/img/donepipeline.png)
+![Run the pipeline](/img/donePipeline.png)
     - After running the pipeline, you will have the application deployed on EKS, and a LoadBalancer created.
     ![Access Application](/img/createdLB.png)
     - You can access the application using the LoadBalancer IP or the NodePort.
