@@ -89,7 +89,7 @@ After running the above commands, you will have a Jenkins and SonarQube server r
     - Docker
 ![Docker credential](/img/addDockerCredentials.png)
 5. Configure the SonarQube server:
-![DoneSonarQube](/img/oneSonar.png)
+![DoneSonarQube](/img/doneSonar.png)
 Login to SonarQube at `http://<EC2_PUBLIC_IP>:9000` with the default credentials (admin/admin) and change the password. Then, generate a token.
 Go Administration → Security → Users → Tokens and Update Token → Define the Token → Generate Token.
 ![Create Token For Jenkins On Sonar](/img/createTokenForJenkinsOnSonar.png)
@@ -151,7 +151,7 @@ Go Administration → Security → Users → Tokens and Update Token → Define 
     ```bash
     kubectl get nodes
     ```
-    ![verifyEKS](/img/createdNodes.png)
+    ![verifyEKS](/img/CreatedNodes.png)
     Open ~/.kube/config and check the users: section. Copy the certificate-authority-data and add it to the Jenkins credentials as a secret text to use it in the pipeline.
     ![getcertificate](/img/getK8sCert.png)
 15. Add the deploy stage to the previous pipeline:
@@ -169,7 +169,7 @@ Go Administration → Security → Users → Tokens and Update Token → Define 
     }
     ```
 16. Run the pipeline:
-![Run the pipeline](/img/donePipeline.png)
+![Run the pipeline](/img/donepipeline.png)
     - After running the pipeline, you will have the application deployed on EKS, and a LoadBalancer created.
     ![Access Application](/img/createdLB.png)
     - You can access the application using the LoadBalancer IP or the NodePort.
