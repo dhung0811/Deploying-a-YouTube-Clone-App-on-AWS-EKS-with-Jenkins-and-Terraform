@@ -11,6 +11,8 @@ pipeline{
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
         NVD_API_KEY = credentials('NVD_API_KEY')
+        REACT_APP_RAPID_API_KEY = credentials('REACT_APP_RAPID_API_KEY')
+        
     }
     stages {
        stage('Checkout from Git'){
@@ -74,7 +76,7 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'Docker', toolName: 'Docker'){
-                       sh "docker build --build-arg REACT_APP_RAPID_API_KEY='8b2cd34be7mshd945006b8a4b39fp1fe397jsn627a373b0e85' -t youtube ."
+                       sh "docker build --build-arg REACT_APP_RAPID_API_KEY=${REACT_APP_RAPID_API_KEY} -t youtube ."
                        sh "docker tag youtube dhung0811/youtube:latest "
                        sh "docker push dhung0811/youtube:latest "
                     }
@@ -115,4 +117,5 @@ pipeline{
     }
 }
 }
+
 
